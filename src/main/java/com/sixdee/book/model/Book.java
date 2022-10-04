@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "BOOK_DETAILS")
-@JavaBean
 public class Book 
 { 
 	@Id
