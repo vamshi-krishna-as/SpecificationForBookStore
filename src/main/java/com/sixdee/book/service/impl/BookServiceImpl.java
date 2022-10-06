@@ -31,4 +31,9 @@ public class BookServiceImpl implements BookService
 	        entity.getTotalElements(), entity.getTotalPages(), entity.isLast());
 	    
 	}
+	
+	@Override
+	public void deleteById(int bookId) {
+		repo.deleteById(bookId);
+	}
 }

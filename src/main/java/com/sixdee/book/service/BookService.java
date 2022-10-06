@@ -12,4 +12,7 @@ public interface BookService
 	public PagedResponse<Book> findAllBooks(Pageable pageable, Specification<Book> spec);
 
 	public void addBook(Book book);
+	
+	public void deleteById(int bookId);
+
 }

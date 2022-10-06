@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,16 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sixdee.book.annotation.And;
 import com.sixdee.book.model.Book;
 import com.sixdee.book.service.BookService;
 import com.sixdee.book.specification.PagedResponse;
 
 import net.kaczmarzyk.spring.data.jpa.domain.Equal;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
 import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 
 @RestController
-@RequestMapping("/api")
 public class BookController {
 	
 	@Autowired
@@ -56,5 +56,12 @@ public class BookController {
 						sort)
 				: Pageable.unpaged());
 		return bs.findAllBooks(pageable, spec);
+	}
+	
+	@DeleteMapping("/deleteBooks/{bookId}")
+	public int deleteBooks(@PathVariable("bookId") int bookId)
+	{
+		bs.deleteById(bookId);
+		return 0;
 	}
 }
