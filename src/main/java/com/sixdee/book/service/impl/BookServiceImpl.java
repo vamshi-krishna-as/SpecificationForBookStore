@@ -36,4 +36,10 @@ public class BookServiceImpl implements BookService
 	public void deleteById(int bookId) {
 		repo.deleteById(bookId);
 	}
+
+
+	@Override
+	public Page findAll(Pageable pageable) {
+		return repo.findAll(pageable);
+	}
 }

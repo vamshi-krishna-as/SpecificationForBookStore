@@ -1,5 +1,6 @@
 package com.sixdee.book.service;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -14,5 +15,7 @@ public interface BookService
 	public void addBook(Book book);
 	
 	public void deleteById(int bookId);
+
+	public Page findAll(Pageable pageable);
 
 }

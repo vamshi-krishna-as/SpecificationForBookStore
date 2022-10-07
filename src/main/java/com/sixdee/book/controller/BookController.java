@@ -1,6 +1,7 @@
 package com.sixdee.book.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -57,6 +58,12 @@ public class BookController {
 				: Pageable.unpaged());
 		return bs.findAllBooks(pageable, spec);
 	}
+
+	@GetMapping(value = "/bookPageable")
+	Page bookPageable(Pageable pageable)
+	{
+		return bs.findAll(pageable);
+	}
 	
 	@DeleteMapping("/deleteBooks/{bookId}")
 	public int deleteBooks(@PathVariable("bookId") int bookId)
@@ -64,4 +71,5 @@ public class BookController {
 		bs.deleteById(bookId);
 		return 0;
 	}
+	
 }
